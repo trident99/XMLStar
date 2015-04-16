@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>XMLStarTestAppClass</class>
+ <widget class="QMainWindow" name="XMLStarTestAppClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1117</width>
+    <height>804</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>XMLStarTestBed</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="m_lblXMLTreeView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>XML Tree View</string>
+    </property>
+   </widget>
+   <widget class="QTreeView" name="m_tvwXMLModel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>551</width>
+      <height>721</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="m_txtNodeValue">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>380</y>
+      <width>531</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="m_lblNodeValue">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>360</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Node Value</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="m_cmdApplyChanges">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>300</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Apply Changes</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabViewSubNodes">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>0</y>
+      <width>541</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tabAttributes">
+     <attribute name="title">
+      <string>Attributes</string>
+     </attribute>
+     <widget class="QTreeView" name="m_tvwXMLAttributes">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>521</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabComments">
+     <attribute name="title">
+      <string>Comments</string>
+     </attribute>
+     <widget class="QTreeView" name="m_tvwXMLComments">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>521</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabProcesses">
+     <attribute name="title">
+      <string>Processes</string>
+     </attribute>
+     <widget class="QTreeView" name="m_tvwXMLProcesses">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>521</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QTextEdit" name="m_txtNodeName">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>330</y>
+      <width>531</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="m_lblNodeName">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>310</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Node Name</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="mnuMain">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1117</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_XML_File"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="actionClose_XML_File"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuRead_Tests">
+    <property name="title">
+     <string>Read Tests</string>
+    </property>
+    <addaction name="actionLoad_Scenario_1"/>
+    <addaction name="actionLoad_Scenario_2"/>
+    <addaction name="actionLoad_Scenario_3"/>
+    <addaction name="actionLoad_Scenario_4"/>
+   </widget>
+   <widget class="QMenu" name="menuWrite_Tests">
+    <property name="title">
+     <string>Write Tests</string>
+    </property>
+    <addaction name="actionSave_Scenario_1"/>
+    <addaction name="actionSave_Scenario_2"/>
+    <addaction name="actionSave_Scenario_3"/>
+    <addaction name="actionSave_Scenario_4"/>
+   </widget>
+   <widget class="QMenu" name="menuReadWrite_Tests">
+    <property name="title">
+     <string>ReadWrite Tests</string>
+    </property>
+    <addaction name="actionRW_Scenario_1"/>
+    <addaction name="actionRW_Scenario_2"/>
+    <addaction name="actionRW_Scenario_3"/>
+    <addaction name="actionRW_Scenario_4"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuRead_Tests"/>
+   <addaction name="menuWrite_Tests"/>
+   <addaction name="menuReadWrite_Tests"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpen_XML_File">
+   <property name="text">
+    <string>Open XML File</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="text">
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionClose_XML_File">
+   <property name="text">
+    <string>Close XML File</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionLoad_Scenario_1">
+   <property name="text">
+    <string>Load Scenario 1</string>
+   </property>
+  </action>
+  <action name="actionLoad_Scenario_2">
+   <property name="text">
+    <string>Load Scenario 2</string>
+   </property>
+  </action>
+  <action name="actionLoad_Scenario_3">
+   <property name="text">
+    <string>Load Scenario 3</string>
+   </property>
+  </action>
+  <action name="actionLoad_Scenario_4">
+   <property name="text">
+    <string>Load Scenario 4</string>
+   </property>
+  </action>
+  <action name="actionSave_Scenario_1">
+   <property name="text">
+    <string>Save Scenario 1</string>
+   </property>
+  </action>
+  <action name="actionSave_Scenario_2">
+   <property name="text">
+    <string>Save Scenario 2</string>
+   </property>
+  </action>
+  <action name="actionSave_Scenario_3">
+   <property name="text">
+    <string>Save Scenario 3</string>
+   </property>
+  </action>
+  <action name="actionSave_Scenario_4">
+   <property name="text">
+    <string>Save Scenario 4</string>
+   </property>
+  </action>
+  <action name="actionRW_Scenario_1">
+   <property name="text">
+    <string>RW Scenario 1</string>
+   </property>
+  </action>
+  <action name="actionRW_Scenario_2">
+   <property name="text">
+    <string>RW Scenario 2</string>
+   </property>
+  </action>
+  <action name="actionRW_Scenario_3">
+   <property name="text">
+    <string>RW Scenario 3</string>
+   </property>
+  </action>
+  <action name="actionRW_Scenario_4">
+   <property name="text">
+    <string>RW Scenario 4</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="XMLStarTestBed.qrc"/>
+ </resources>
+ <connections/>
+</ui>

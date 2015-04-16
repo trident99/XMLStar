@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLStar", "XMLStar\XMLStar.vcproj", "{1F61D35A-2B1A-4B44-B54A-FFED30FC0218}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLStarTestApp", "XMLStarTestApp\XMLStarTestApp.vcproj", "{D23082E5-9135-4F94-90B2-F1C8C66B29F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F61D35A-2B1A-4B44-B54A-FFED30FC0218} = {1F61D35A-2B1A-4B44-B54A-FFED30FC0218}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F61D35A-2B1A-4B44-B54A-FFED30FC0218}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F61D35A-2B1A-4B44-B54A-FFED30FC0218}.Debug|Win32.Build.0 = Debug|Win32
+		{1F61D35A-2B1A-4B44-B54A-FFED30FC0218}.Release|Win32.ActiveCfg = Release|Win32
+		{1F61D35A-2B1A-4B44-B54A-FFED30FC0218}.Release|Win32.Build.0 = Release|Win32
+		{D23082E5-9135-4F94-90B2-F1C8C66B29F3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D23082E5-9135-4F94-90B2-F1C8C66B29F3}.Debug|Win32.Build.0 = Debug|Win32
+		{D23082E5-9135-4F94-90B2-F1C8C66B29F3}.Release|Win32.ActiveCfg = Release|Win32
+		{D23082E5-9135-4F94-90B2-F1C8C66B29F3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
