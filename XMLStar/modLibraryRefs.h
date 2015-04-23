@@ -25,6 +25,7 @@
 #pragma once
 #pragma warning (disable: 4251)
 #pragma warning (disable: 4005)//macro redefinition warning 
+#pragma warning (disable: 4996)//sprintf warning sprintf_s wanted
 
 /*
 #ifdef _DEBUG
@@ -42,11 +43,11 @@
 	#define STD_LIB_INCLUDES
 	#define _USE_MATH_DEFINES
 
-	#include <cstdlib>
+	//#include <cstdlib>
 	#include <stdlib.h>
-	#include <malloc.h>
-	#include <memory.h>
-	#include <tchar.h>
+	//#include <malloc.h>
+	//#include <memory.h>
+	//#include <tchar.h>
 	//containers
 	#include <string>
 	#include <vector>
@@ -54,13 +55,13 @@
 	#include <map>
 	//algorithms
 	#include <algorithm>
-	#include <utility>
-	#include <numeric>
-	#include <time.h>
+	//#include <utility>
+	//#include <numeric>
+	//#include <time.h>
 	#include <math.h>
-	#include <cmath>
+	//#include <cmath>
 	//streaming input / output
-	#include <conio.h>
+	//#include <conio.h>
 	#include <istream>
 	#include <ostream>
 	#include <iostream>
@@ -71,6 +72,7 @@
 //custom macros
 
 // MODIFIED 8.7.12 WAL to correct DLL declarations
+
 #ifdef XMLSTAR_DLLEXPORT
 #define XMLSTAR_DLLAPI __declspec(dllexport)
 #else

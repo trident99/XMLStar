@@ -24,9 +24,12 @@
 **  along with XMLStar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "XMLStarTestApp.h"
+#include "XMLViewer.h"
+#include <QtWidgets\QFileDialog>
+#include <string>
+using namespace std;
 
-XMLStarTestApp::XMLStarTestApp(QWidget *parent, Qt::WFlags flags)
+XMLViewer::XMLViewer(QWidget *parent, Qt::WindowFlags flags)
 	: QMainWindow(parent, flags)
 {
 	m_ptrModelElement = NULL;
@@ -39,7 +42,7 @@ XMLStarTestApp::XMLStarTestApp(QWidget *parent, Qt::WFlags flags)
 	OnIntializeDialog();
 }
 
-XMLStarTestApp::~XMLStarTestApp()
+XMLViewer::~XMLViewer()
 {
 	try{
 		ui.m_tvwXMLModel->setModel(NULL);
@@ -58,7 +61,7 @@ XMLStarTestApp::~XMLStarTestApp()
 	}
 }
 
-void XMLStarTestApp::Set_ptrApplication(QApplication * ptrApp)
+void XMLViewer::Set_ptrApplication(QApplication * ptrApp)
 {
 	if(ptrApp)
 	{
@@ -69,7 +72,7 @@ void XMLStarTestApp::Set_ptrApplication(QApplication * ptrApp)
 
 
 //!Calls STANDARD PUBLIC FUNCTIONS THAT EVERY MAIN DIALOG SHOULD HAVE
-void XMLStarTestApp::OnIntializeDialog(void)
+void XMLViewer::OnIntializeDialog(void)
 {
 	this->OnInitializeForms();
 	this->OnInitializeControls();
@@ -81,19 +84,19 @@ void XMLStarTestApp::OnIntializeDialog(void)
 	this->CreateStatusBar();
 };
 //!Initialize the child forms for the GUI
-void XMLStarTestApp::OnInitializeForms(void)
+void XMLViewer::OnInitializeForms(void)
 {
 	//THIS FUNCTION IS WHERE ALL SUB-FORMS AND DIALOGS ARE CREATED AND INTIALIZED
 	return;	
 };
 //!Initialize the Controls for the GUI
-void XMLStarTestApp::OnInitializeControls(void)
+void XMLViewer::OnInitializeControls(void)
 {
 
 	return;
 };
 //!Initialize the Dependant Controls that are linked to information in the model
-void XMLStarTestApp::OnInitializeDependantControls(void)
+void XMLViewer::OnInitializeDependantControls(void)
 {
 	//THIS FUNCTION IS WHERE ALL INITIALIZATION OF *MODEL DEPENDENT* GUI CONTROLS IS PERFORMED
 	//CREATE THE XML Element MODEL
@@ -117,19 +120,19 @@ void XMLStarTestApp::OnInitializeDependantControls(void)
 	return;
 };
 //!Create the Main Menu or modify the main menu programmatically
-void XMLStarTestApp::CreateMenus(void)
+void XMLViewer::CreateMenus(void)
 {
 	//THIS FUNCTION IS WHERE ALL MENUS ARE CREATED
 	return;
 };
 //!Create any popup menus for the main application GUI
-void XMLStarTestApp::CreateContextMenus(void)
+void XMLViewer::CreateContextMenus(void)
 {
 	//THIS FUNCTION IS WHERE ALL CONTEXT MENUS ARE CREATED
 	return;
 };
 //!Create the Actions and connect them to the slots code for handling their events
-void XMLStarTestApp::CreateActions(void)
+void XMLViewer::CreateActions(void)
 {
 	//THIS FUNCTION IS WHERE ALL ACTIONS ARE LINKED TO THEIR SLOT FUNCTIONS
 	connect(ui.actionOpen_XML_File, SIGNAL(triggered()),this, SLOT(OnFile_OpenXMLFile_Clicked()) );
@@ -159,24 +162,24 @@ void XMLStarTestApp::CreateActions(void)
 	return;
 };
 //!Create any tool bars needed for the main application GUI
-void XMLStarTestApp::CreateToolBars(void)
+void XMLViewer::CreateToolBars(void)
 {
 	//THIS FUNCTION IS WHERE ALL TOOL BARS ARE CREATED
 	return;
 };
 //!Initialize the status bar for the main application GUI
-void XMLStarTestApp::CreateStatusBar(void)
+void XMLViewer::CreateStatusBar(void)
 {
 	//THIS FUNCTION IS WHERE ALL STATUS BAR INITIALIZATION AND CUSTOMIZATION IS PERFORMED
 	return;
 };
 
-void XMLStarTestApp::OnFile_NewXMLFile_Clicked(void)
+void XMLViewer::OnFile_NewXMLFile_Clicked(void)
 {
 	return;
 };
 
-void XMLStarTestApp::OnFile_OpenXMLFile_Clicked(void)
+void XMLViewer::OnFile_OpenXMLFile_Clicked(void)
 {
 	int i, intReturn;
 	QString strFileName;
@@ -205,7 +208,7 @@ void XMLStarTestApp::OnFile_OpenXMLFile_Clicked(void)
 	return;
 };
 
-void XMLStarTestApp::OnFile_SaveXMLFile_Clicked(void)
+void XMLViewer::OnFile_SaveXMLFile_Clicked(void)
 {
 	int i, intReturn;
 	XMLWriter objWriter;
@@ -228,19 +231,19 @@ void XMLStarTestApp::OnFile_SaveXMLFile_Clicked(void)
 	return;
 };
 
-void XMLStarTestApp::OnFile_SaveAsXMLFile_Clicked(void)
+void XMLViewer::OnFile_SaveAsXMLFile_Clicked(void)
 {
 	return;
 };
 
-void XMLStarTestApp::OnFile_CloseXMLFile_Clicked(void)
+void XMLViewer::OnFile_CloseXMLFile_Clicked(void)
 {
 	this->m_ptrModelElement->Clear();
 	this->m_ptrXMLElementModel->UpdateModel();
 	return;
 };
 
-void XMLStarTestApp::OnFile_Exit_Clicked(void)
+void XMLViewer::OnFile_Exit_Clicked(void)
 {
 	if(this->m_ptrApplication)
 	{
@@ -248,7 +251,7 @@ void XMLStarTestApp::OnFile_Exit_Clicked(void)
 	};
 };
 //! This SLOT Action that updates the context specific tree values based on the user selected node. Gets triggered
-void XMLStarTestApp::OnTvwXMLModelSelectNode(const QModelIndex & objCurrIndex,const QModelIndex & objPrevIndex)
+void XMLViewer::OnTvwXMLModelSelectNode(const QModelIndex & objCurrIndex,const QModelIndex & objPrevIndex)
 {
 	XMLElement * ptrCurrElement = NULL;
 	std::string strTemp;
@@ -285,7 +288,7 @@ void XMLStarTestApp::OnTvwXMLModelSelectNode(const QModelIndex & objCurrIndex,co
 
 
 
-void XMLStarTestApp::OnLoad_TestScenario01(void)
+void XMLViewer::OnLoad_TestScenario01(void)
 {
 	int intReturn;
 	if(m_ptrXMLElementModel)
@@ -311,7 +314,7 @@ void XMLStarTestApp::OnLoad_TestScenario01(void)
 	};
 	return;
 };
-void XMLStarTestApp::OnLoad_TestScenario02(void)
+void XMLViewer::OnLoad_TestScenario02(void)
 {
 	int intReturn;
 	if(m_ptrXMLElementModel)
@@ -336,7 +339,7 @@ void XMLStarTestApp::OnLoad_TestScenario02(void)
 	};
 	return;
 };
-void XMLStarTestApp::OnLoad_TestScenario03(void)
+void XMLViewer::OnLoad_TestScenario03(void)
 {
 
 
@@ -395,7 +398,7 @@ void XMLStarTestApp::OnLoad_TestScenario03(void)
 
 
 };
-void XMLStarTestApp::OnLoad_TestScenario04(void)
+void XMLViewer::OnLoad_TestScenario04(void)
 {
 	int intReturn;
 	if(m_ptrXMLElementModel)
@@ -430,7 +433,7 @@ void XMLStarTestApp::OnLoad_TestScenario04(void)
 
 };
 
-void XMLStarTestApp::OnSave_TestScenario01(void)
+void XMLViewer::OnSave_TestScenario01(void)
 {
 	//create the tree manually
 	int intReturn;
@@ -489,7 +492,7 @@ void XMLStarTestApp::OnSave_TestScenario01(void)
 	ui.m_txtNodeValue->setText(strXMLOut.c_str());
 	return;
 };
-void XMLStarTestApp::OnSave_TestScenario02(void)
+void XMLViewer::OnSave_TestScenario02(void)
 {
 	//create the tree manually
 	int intReturn;
@@ -548,28 +551,28 @@ void XMLStarTestApp::OnSave_TestScenario02(void)
 	ui.m_txtNodeValue->setText(strXMLOut.c_str());
 	return;
 };
-void XMLStarTestApp::OnSave_TestScenario03(void)
+void XMLViewer::OnSave_TestScenario03(void)
 {
 
 };
-void XMLStarTestApp::OnSave_TestScenario04(void)
+void XMLViewer::OnSave_TestScenario04(void)
 {
 
 };
 
-void XMLStarTestApp::OnReadWrite_TestScenario01(void)
+void XMLViewer::OnReadWrite_TestScenario01(void)
 {
 
 };
-void XMLStarTestApp::OnReadWrite_TestScenario02(void)
+void XMLViewer::OnReadWrite_TestScenario02(void)
 {
 
 };
-void XMLStarTestApp::OnReadWrite_TestScenario03(void)
+void XMLViewer::OnReadWrite_TestScenario03(void)
 {
 
 };
-void XMLStarTestApp::OnReadWrite_TestScenario04(void)
+void XMLViewer::OnReadWrite_TestScenario04(void)
 {
 
 };

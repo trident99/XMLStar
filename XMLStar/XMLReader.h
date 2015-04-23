@@ -36,8 +36,7 @@ namespace XMLStar{
 	class XMLComment;
 	class XMLProcess;
 
-	class XMLSTAR_DLLAPI XMLReader : 
-		public string
+	class XMLSTAR_DLLAPI XMLReader
 	{
 	public:
 

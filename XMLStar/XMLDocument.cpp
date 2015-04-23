@@ -34,6 +34,12 @@ using namespace XMLStar;
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLDocument::XMLDocument(void)
 : XMLElement()
+,m_blnIncludePrologue(true)
+,m_strVersion()
+,m_strEncoding()
+,m_strStandalone()
+,m_blnIncludeDocType()
+,m_strDocType()
 {
 	//XMLNode Initialization/////////////
 	Set_enumNodeType(DOCUMENT);
@@ -57,6 +63,12 @@ XMLDocument::XMLDocument(void)
 };
 XMLDocument::XMLDocument(XMLNode * ptrParentNode)
 : XMLElement(ptrParentNode)
+,m_blnIncludePrologue(true)
+,m_strVersion()
+,m_strEncoding()
+,m_strStandalone()
+,m_blnIncludeDocType()
+,m_strDocType()
 {
 	//XMLNode Initialization/////////////
 	Set_enumNodeType(DOCUMENT);
@@ -78,6 +90,12 @@ XMLDocument::XMLDocument(XMLNode * ptrParentNode)
 	return;
 };
 XMLDocument::XMLDocument(XMLDocument & rhs)
+: m_blnIncludePrologue(true)
+,m_strVersion()
+,m_strEncoding()
+,m_strStandalone()
+,m_blnIncludeDocType()
+,m_strDocType()
 {
 	//self assignment check
 	if(this == &rhs)

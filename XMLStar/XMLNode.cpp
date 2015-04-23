@@ -33,13 +33,23 @@ using namespace XMLStar;
 
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLNode::XMLNode(void)
+: m_strValue()
+,m_strName()
+,m_enumNodeType(NODE)
+,m_enumValueType(XML_STRING)
+,m_ptrParentNode(NULL)
+,m_objIndex()
 {	
-	m_enumValueType = XML_STRING;
-	m_ptrParentNode = NULL;
 	m_objIndex.Zero();
 	return;
 };
 XMLNode::XMLNode(XMLNode * ptrParentNode)
+:  m_strValue()
+,m_strName()
+,m_enumNodeType(NODE)
+,m_enumValueType(XML_STRING)
+,m_ptrParentNode(ptrParentNode)
+,m_objIndex()
 {
 	m_enumValueType = XML_STRING;
 	if(ptrParentNode)
@@ -54,6 +64,11 @@ XMLNode::XMLNode(XMLNode * ptrParentNode)
 	return;
 };
 XMLNode::XMLNode(XMLNode & rhs)
+:m_strValue()
+,m_strName()
+,m_enumNodeType(NODE)
+,m_enumValueType(XML_STRING)
+,m_objIndex()
 {
 	//self assignment check
 	if(this == &rhs)

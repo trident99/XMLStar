@@ -37,14 +37,15 @@ using namespace XMLStar;
 
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLReader::XMLReader(void)
-: string()
+: m_intStringSize(0)
+,m_ptrCurrComment(NULL)
+,m_ptrCurrProcess(NULL)
 {
 	return;
 };
 
 XMLReader::~XMLReader(void)
 {
-	clear();
 	return;
 };
 //XML SERIALIZATION AND DE-SERIALIZATION METHODS///////////
@@ -868,7 +869,7 @@ long XMLReader::FindNextNWSChar(const std::string & strInput,size_t intStartPos)
 	intCursor = intStartPos;
 	while(intCursor < lngStringSize)
 	{
-		if( int(strInput[intCursor]) <= 32)
+		if( int(strInput[intCursor]) > 32)
 		{
 			//32 or less is the white space characters of ASCII
 			//then non-white space legal character found

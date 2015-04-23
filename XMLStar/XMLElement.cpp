@@ -36,38 +36,59 @@ using namespace XMLStar;
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLElement::XMLElement(void)
 : XMLNode()
+,m_arrPtrAttributes()
+,m_arrPtrComments()
+,m_arrPtrProcesses()
+,m_arrPtrSubElements()
+,m_blnRootNode(false)
+,m_blnNullNode(false)
+,m_intCurrAttributeIndex(0)
+,m_intCurrCommentIndex(0)
+,m_intCurrProcessIndex(0)
+,m_intCurrElementIndex(0)
 {
 	//XMLNode Initialization/////////////
 	Set_enumNodeType(ELEMENT);
 	//XMLElement Initialization//////////
-	m_intCurrAttributeIndex = NULL;
-	m_intCurrElementIndex = NULL;
-	m_blnRootNode = false;
-	m_blnNullNode = false;
 	return;
 };
 XMLElement::XMLElement(XMLNode * ptrParentNode)
 : XMLNode(ptrParentNode)
+,m_arrPtrAttributes()
+,m_arrPtrComments()
+,m_arrPtrProcesses()
+,m_arrPtrSubElements()
+,m_blnRootNode(false)
+,m_blnNullNode(false)
+,m_intCurrAttributeIndex(0)
+,m_intCurrCommentIndex(0)
+,m_intCurrProcessIndex(0)
+,m_intCurrElementIndex(0)
 {
 	//XMLNode Initialization/////////////
 	Set_enumNodeType(ELEMENT);
 	//XMLElement Initialization//////////
-	m_intCurrAttributeIndex = NULL;
-	m_intCurrElementIndex = NULL;
-	m_blnRootNode = false;
-	m_blnNullNode = false;
+
 	return;
 };
 XMLElement::XMLElement(XMLElement & rhs)
+:m_arrPtrAttributes()
+,m_arrPtrComments()
+,m_arrPtrProcesses()
+,m_arrPtrSubElements()
+,m_blnRootNode(false)
+,m_blnNullNode(false)
+,m_intCurrAttributeIndex(0)
+,m_intCurrCommentIndex(0)
+,m_intCurrProcessIndex(0)
+,m_intCurrElementIndex(0)
 {
 	//self assignment check
 	if(this == &rhs)
 		return;
 	//XMLNode Copy Construction
-	XMLNode::XMLNode(rhs);
+	XMLNode::operator = (rhs);
 	//XMLElement Copy Construction
-	m_intCurrAttributeIndex = 0;
-	m_intCurrElementIndex = 0;
 	m_blnRootNode = rhs.Get_blnRootNode();
 	m_blnNullNode = rhs.Get_blnNullNode();
 	return;
@@ -88,6 +109,8 @@ XMLElement & XMLElement::operator = (XMLElement & rhs)
 	//XMLElement Assignment Operation
 	m_intCurrAttributeIndex = 0;
 	m_intCurrElementIndex = 0;
+	m_intCurrCommentIndex = 0;
+	m_intCurrProcessIndex = 0;
 	m_blnRootNode = rhs.Get_blnRootNode();
 	m_blnNullNode = rhs.Get_blnNullNode();
 	return *this;

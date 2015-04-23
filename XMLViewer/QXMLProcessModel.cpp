@@ -24,33 +24,34 @@
 **  along with XMLStar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include ".\QXMLAttributeModel.h"
-#include "XMLNode.h"
+#include ".\QXMLProcessModel.h"
+
 using namespace XMLStar;
 
-QXMLAttributeModel::QXMLAttributeModel(QObject *parent)
+QXMLProcessModel::QXMLProcessModel(QObject *parent)
 	: QAbstractItemModel(parent)
 {
 	m_ptrElement = NULL;
 }
 
-QXMLAttributeModel::~QXMLAttributeModel()
+QXMLProcessModel::~QXMLProcessModel()
 {
 	m_ptrElement = NULL;
 }
 
 
-void QXMLAttributeModel::Set_ptrElement(XMLElement * ptrElement)
+void QXMLProcessModel::Set_ptrElement(XMLElement * ptrElement)
 {
+	this->beginResetModel();
 	Clear_ptrElement();
 	//ptrElement->Set_ptrParentNode(m_ptrRootElement);
 	if(ptrElement)
 	{
 		m_ptrElement = ptrElement;
 	};
-	this->reset();
+	this->endResetModel();
 };
-XMLElement * QXMLAttributeModel::Get_ptrElement(void)
+XMLElement * QXMLProcessModel::Get_ptrElement(void)
 {
 	if(m_ptrElement)
 	{
@@ -59,18 +60,18 @@ XMLElement * QXMLAttributeModel::Get_ptrElement(void)
 		return NULL;
 	};
 };
-void QXMLAttributeModel::Clear_ptrElement(void)
+void QXMLProcessModel::Clear_ptrElement(void)
 {
-
+	this->beginResetModel();
 	try{
 		m_ptrElement = NULL;
 	}catch(...){
 		//continue
 	}
-	this->reset();
+	this->endResetModel();
 
 };
-QModelIndex QXMLAttributeModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex QXMLProcessModel::index(int row, int column, const QModelIndex &parent) const
 {
 	//this subroutine given the row and colum, and parent index by reference returns the QModelIndex for that childNode
 	try
@@ -82,7 +83,7 @@ QModelIndex QXMLAttributeModel::index(int row, int column, const QModelIndex &pa
 		}else{
 			if(m_ptrElement)
 			{
-				XMLNode *childItem = this->m_ptrElement->GetAttribute( row );
+				XMLNode *childItem = this->m_ptrElement->GetProcess( row );
 				if( childItem )
 				{
 					return createIndex( row, column, childItem );
@@ -99,7 +100,7 @@ QModelIndex QXMLAttributeModel::index(int row, int column, const QModelIndex &pa
 	}
 }
 
-QModelIndex QXMLAttributeModel::parent(const QModelIndex &index) const
+QModelIndex QXMLProcessModel::parent(const QModelIndex &index) const
 {
 	try{   
 		if( !index.isValid() )
@@ -113,7 +114,7 @@ QModelIndex QXMLAttributeModel::parent(const QModelIndex &index) const
 
 }
 
-int QXMLAttributeModel::rowCount(const QModelIndex &parent) const
+int QXMLProcessModel::rowCount(const QModelIndex &parent) const
 {
 	int intCount = 0;
 	try
@@ -123,7 +124,7 @@ int QXMLAttributeModel::rowCount(const QModelIndex &parent) const
 			if(m_ptrElement)
 			{
 			//we are in the root node, get the vector size
-			intCount = this->m_ptrElement->CountAttributes();
+			intCount = this->m_ptrElement->CountProcesses();
 			}else{
 				intCount = 0;
 			};
@@ -137,12 +138,12 @@ int QXMLAttributeModel::rowCount(const QModelIndex &parent) const
     return intCount;
 }
 
-int QXMLAttributeModel::columnCount(const QModelIndex & /* parent */) const
+int QXMLProcessModel::columnCount(const QModelIndex & /* parent */) const
 {
     return 3;
 }
 
-QVariant QXMLAttributeModel::data(const QModelIndex &index, int role) const
+QVariant QXMLProcessModel::data(const QModelIndex &index, int role) const
 {
 	try{
 		if( !index.isValid() )
@@ -167,7 +168,7 @@ QVariant QXMLAttributeModel::data(const QModelIndex &index, int role) const
 	}
 }
 
-Qt::ItemFlags QXMLAttributeModel::flags( const QModelIndex &index ) const
+Qt::ItemFlags QXMLProcessModel::flags( const QModelIndex &index ) const
 {
     if( !index.isValid() )
         return 0;
@@ -175,11 +176,11 @@ Qt::ItemFlags QXMLAttributeModel::flags( const QModelIndex &index ) const
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
-QVariant QXMLAttributeModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant QXMLProcessModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
         if (section == 0) {
-            return tr("Attribute Name");
+            return tr("Process Name");
         } else if (section == 1) {
             return tr("Value");
 		}
@@ -187,7 +188,8 @@ QVariant QXMLAttributeModel::headerData(int section, Qt::Orientation orientation
     return QVariant();
 }
 
-void QXMLAttributeModel::UpdateModel(void)
+void QXMLProcessModel::UpdateModel(void)
 {
-	this->reset();
+	this->beginResetModel();
+	this->endResetModel();
 };

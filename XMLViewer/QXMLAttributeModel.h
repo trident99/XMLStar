@@ -25,23 +25,20 @@
 */
 
 
-#ifndef QXMLCOMMENTMODEL_H
-#define QXMLCOMMENTMODEL_H
+#ifndef QXMLATTRIBUTEMODEL_H
+#define QXMLATTRIBUTEMODEL_H
 
 #include <QAbstractItemModel>
 #include ".\modLibraryRefs.h"
-#include "XMLNode.h"
-#include "XMLComment.h"
-#include "XMLElement.h"
 using namespace XMLStar;
 
-class QXMLCommentModel : public QAbstractItemModel
+class QXMLAttributeModel : public QAbstractItemModel
 {
 	Q_OBJECT
 
 public:
-	QXMLCommentModel(QObject * parent);
-	~QXMLCommentModel();
+	QXMLAttributeModel(QObject * parent);
+	~QXMLAttributeModel();
 
 	void Set_ptrElement(XMLElement * ptrElement);
 	XMLElement * Get_ptrElement(void);
@@ -68,4 +65,4 @@ private:
 	XMLElement * m_ptrElement;
 };//end class definition QXMLElementModel
 
-#endif // QXMLCommentModel_H
+#endif // QXMLELEMENTMODEL_H

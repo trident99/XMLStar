@@ -150,16 +150,16 @@ namespace XMLStar{
 		std::string m_strValue;
 	private:
 		//PRIVATE MEMBER VARIABLES///////////////////////////////////
+		//!String representation of the node name
+		std::string m_strName;
 		//!enumerated node type used for recognition purposes
 		XMLNodeType m_enumNodeType;
+		//!enumerated value type for base element values
+		XMLValueType m_enumValueType;
 		//! pointer to the parent node
 		XMLNode * m_ptrParentNode;
 		//!index of the node
 		XMLNodeIndex m_objIndex;
-		//!String representation of the node name
-		std::string m_strName;
-		//!enumerated value type for base element values
-		XMLValueType m_enumValueType;
 
 	};//end class XMLNode description
 
@@ -191,7 +191,7 @@ namespace XMLStar{
 				return 0;
 			}
 		}catch(...){
-			return NULL;
+			return 0;
 		};
 	};
 	//!Delete an attribute from the element by its name
@@ -216,7 +216,7 @@ namespace XMLStar{
 				};
 			};//end for loop through attributes
 			//no match found return NULL
-			return NULL;
+			return 0;
 		}catch(...){
 			return -1;
 		};
@@ -241,7 +241,7 @@ namespace XMLStar{
 				return 1;
 			};
 			//nothing done
-			return NULL;
+			return 0;
 		}catch(...){
 			return -1;
 		};

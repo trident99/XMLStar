@@ -34,31 +34,32 @@ using namespace XMLStar;
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLProcess::XMLProcess(void)
 : XMLNode()
+,m_intCurrAttributeIndex(0)
 {
 		//XMLNode Initialization/////////////
 	Set_enumNodeType(PROCESS);
-		m_intCurrAttributeIndex = NULL;
 	return;
 };
 
 XMLProcess::XMLProcess(XMLNode * ptrParentNode)
 : XMLNode(ptrParentNode)
+,m_intCurrAttributeIndex(0)
 {
 		//XMLNode Initialization/////////////
 	Set_enumNodeType(PROCESS);
-		m_intCurrAttributeIndex = NULL;
 	return;
 };
 
 XMLProcess::XMLProcess(XMLProcess & rhs)
+: m_intCurrAttributeIndex(0)
 {
 	//self assignment check
 	if(this == &rhs)
 		return;
 	//XMLNode Copy Construction
-	XMLNode::XMLNode(rhs);
+	XMLNode::operator = (rhs);
 	//XMLProcess Copy Construction
-		m_intCurrAttributeIndex = NULL;
+		m_intCurrAttributeIndex = 0;
 
 	return;
 };
@@ -77,7 +78,7 @@ XMLProcess & XMLProcess::operator = (XMLProcess & rhs)
 	//XMLNode Assignment Operation
 	XMLNode::operator = (rhs);
 	//XMLProcess Assignment Operation
-	m_intCurrAttributeIndex = NULL;
+	m_intCurrAttributeIndex = 0;
 	return *this;
 };
 

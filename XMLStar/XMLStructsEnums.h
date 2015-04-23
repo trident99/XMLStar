@@ -80,6 +80,9 @@ namespace XMLStar{
 	public:
 
 		XMLNodeIndex()
+		: m_intLevel(0)
+		,m_intRow(0)
+		,m_intColumn(0)
 		{
 			//initialize the values to an invalid index
 			Reset();
@@ -123,6 +126,12 @@ namespace XMLStar{
 	public:
 
 		XMLElementIndex()
+		: m_intOpenTagStartPos(0)
+		, m_intTagLength(0)
+		, m_intOpenTagEndPos(0)
+		, m_intSubElementStartPos(0)
+		, m_intCloseTagStartPos(0)
+		, m_intCloseTagEndPos(0)
 		{
 			//initialize the values to an invalid index
 			Reset();

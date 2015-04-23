@@ -81,6 +81,6 @@ typedef unsigned short ushort,USHORT;
 //XMLStar INCLUDES
 #ifndef XMLStar_INCLUDES
 #define XMLStar_INCLUDES
-#include "modXMLStar.h"
+#include "..\XMLStar\modXMLStar.h"
 
 #endif

@@ -24,13 +24,13 @@
 **  along with XMLStar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "XMLStarTestApp.h"
-#include <QtGui/QApplication>
+#include "XMLViewer.h"
+#include <QtWidgets\QApplication>
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	XMLStarTestApp w;
+	XMLViewer w;
 	w.Set_ptrApplication(&a);
 	w.show();
 	return a.exec();

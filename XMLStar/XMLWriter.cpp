@@ -37,7 +37,6 @@ using namespace XMLStar;
 
 //PUBLIC CONSTRUCTORS & DESTRUCTOR/////////////////////////////
 XMLWriter::XMLWriter(void)
-: string()
 {
 	m_intNumIndentSpaces = 3;
 	return;
@@ -45,7 +44,7 @@ XMLWriter::XMLWriter(void)
 
 XMLWriter::~XMLWriter(void)
 {
-	clear();
+	return;
 };
 
 

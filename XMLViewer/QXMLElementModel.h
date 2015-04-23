@@ -25,27 +25,24 @@
 */
 
 
-#ifndef QXMLPROCESSMODEL_H
-#define QXMLPROCESSMODEL_H
+#ifndef QXMLELEMENTMODEL_H
+#define QXMLELEMENTMODEL_H
 
 #include <QAbstractItemModel>
 #include ".\modLibraryRefs.h"
-#include "XMLNode.h"
-#include "XMLProcess.h"
-#include "XMLElement.h"
 using namespace XMLStar;
 
-class QXMLProcessModel : public QAbstractItemModel
+class QXMLElementModel : public QAbstractItemModel
 {
 	Q_OBJECT
 
 public:
-	QXMLProcessModel(QObject * parent);
-	~QXMLProcessModel();
+	QXMLElementModel(QObject * parent);
+	~QXMLElementModel();
 
-	void Set_ptrElement(XMLElement * ptrElement);
-	XMLElement * Get_ptrElement(void);
-	void Clear_ptrElement(void);
+	void Set_ptrModelElement(XMLElement * ptrElement);
+	XMLElement * Get_ptrModelElement(void);
+	void Clear_ptrModelElement(void);
 
 	//QT REQUIRED FUNCTIONS
 	QVariant data( const QModelIndex &index, int role ) const;
@@ -65,7 +62,8 @@ signals:
 
 private:
 
-	XMLElement * m_ptrElement;
+	XMLElement * m_ptrRootElement;
+	XMLElement * m_ptrModelElement;
 };//end class definition QXMLElementModel
 
-#endif // QXMLProcessModel_H
+#endif // QXMLElementModel_H

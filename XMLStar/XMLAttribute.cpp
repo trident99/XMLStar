@@ -52,7 +52,7 @@ XMLAttribute::XMLAttribute(XMLAttribute & rhs)
 	if(this == &rhs)
 		return;
 	//XMLNode Copy Construction
-	XMLNode::XMLNode(rhs);
+	XMLNode::operator =(rhs);
 	//XMLAttribute Copy Construction
 
 	return;

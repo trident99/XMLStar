@@ -24,25 +24,26 @@
 **  along with XMLStar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef XMLStarTestApp_H
-#define XMLStarTestApp_H
+#ifndef XMLViewer_H
+#define XMLViewer_H
 #include <QtCore>
 #include <QtGui>
-#include <QtGui/QMainWindow>
+#include <QtWidgets\QMainWindow>
 #include ".\modLibraryRefs.h"
 #include ".\QXMLElementModel.h"
 #include ".\QXMLAttributeModel.h"
 #include ".\QXMLCommentModel.h"
 #include ".\QXMLProcessModel.h"
-#include "ui_XMLStarTestApp.h"
+#include "ui_XMLViewer.h"
 
-class XMLStarTestApp : public QMainWindow
+
+class XMLViewer : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	XMLStarTestApp(QWidget *parent = 0, Qt::WFlags flags = 0);
-	~XMLStarTestApp();
+	XMLViewer(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+	~XMLViewer();
 
 	void Set_ptrApplication(QApplication * ptrApp);
 
@@ -93,7 +94,7 @@ public:
 			void OnReadWrite_TestScenario03(void);
 			void OnReadWrite_TestScenario04(void);
 private:
-	Ui::XMLStarTestAppClass ui;
+	Ui::XMLViewerClass ui;
 	//
 	QApplication * m_ptrApplication;
 
@@ -108,8 +109,6 @@ private:
 	XMLElement * m_ptrModelElement;
 
 	
-
-
 };
 
-#endif // XMLStarTestApp_H
+#endif // XMLViewer_H

@@ -25,7 +25,7 @@
 */
 
 #include ".\QXMLCommentModel.h"
-#include "XMLNode.h"
+
 using namespace XMLStar;
 
 QXMLCommentModel::QXMLCommentModel(QObject *parent)
@@ -42,13 +42,14 @@ QXMLCommentModel::~QXMLCommentModel()
 
 void QXMLCommentModel::Set_ptrElement(XMLElement * ptrElement)
 {
+	this->beginResetModel();
 	Clear_ptrElement();
 	//ptrElement->Set_ptrParentNode(m_ptrRootElement);
 	if(ptrElement)
 	{
 		m_ptrElement = ptrElement;
 	};
-	this->reset();
+	this->endResetModel();
 };
 XMLElement * QXMLCommentModel::Get_ptrElement(void)
 {
@@ -61,13 +62,13 @@ XMLElement * QXMLCommentModel::Get_ptrElement(void)
 };
 void QXMLCommentModel::Clear_ptrElement(void)
 {
-
+	this->beginResetModel();
 	try{
 		m_ptrElement = NULL;
 	}catch(...){
 		//continue
 	}
-	this->reset();
+	this->endResetModel();
 
 };
 QModelIndex QXMLCommentModel::index(int row, int column, const QModelIndex &parent) const
@@ -189,5 +190,6 @@ QVariant QXMLCommentModel::headerData(int section, Qt::Orientation orientation, 
 
 void QXMLCommentModel::UpdateModel(void)
 {
-	this->reset();
+	this->beginResetModel();
+	this->endResetModel();
 };

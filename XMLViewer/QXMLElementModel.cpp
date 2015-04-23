@@ -25,7 +25,7 @@
 */
 
 #include ".\QXMLElementModel.h"
-#include "XMLNode.h"
+
 using namespace XMLStar;
 
 QXMLElementModel::QXMLElementModel(QObject *parent)
@@ -45,11 +45,12 @@ QXMLElementModel::~QXMLElementModel()
 
 void QXMLElementModel::Set_ptrModelElement(XMLElement * ptrElement)
 {
+	this->beginResetModel();
 	Clear_ptrModelElement();
 	ptrElement->Set_ptrParentNode(m_ptrRootElement);
 	this->m_ptrRootElement->AddSubElement(ptrElement);
 	this->m_ptrRootElement->UpdateIndexes();
-	this->reset();
+	this->endResetModel();
 };
 XMLElement * QXMLElementModel::Get_ptrModelElement(void)
 {
@@ -67,13 +68,13 @@ XMLElement * QXMLElementModel::Get_ptrModelElement(void)
 };
 void QXMLElementModel::Clear_ptrModelElement(void)
 {
-
+	this->beginResetModel();
 	try{
 		this->m_ptrRootElement->Clear();
 	}catch(...){
 		//continue
 	}
-	this->reset();
+	this->endResetModel();
 
 };
 
@@ -234,8 +235,7 @@ int QXMLElementModel::columnCount(const QModelIndex & parent) const
 
 void QXMLElementModel::UpdateModel(void)
 {
-	//this->beginResetModel();
+	this->beginResetModel();
 	this->m_ptrRootElement->UpdateIndexes();
-	this->reset();
-	//this->endResetModel();
+	this->endResetModel();
 };

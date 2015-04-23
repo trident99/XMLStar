@@ -54,7 +54,7 @@ XMLComment::XMLComment(XMLComment & rhs)
 	if(this == &rhs)
 		return;
 	//XMLNode Copy Construction
-	XMLNode::XMLNode(rhs);
+	XMLNode::operator =(rhs);
 	//XMLComment Copy Construction
 
 	return;
